@@ -1,40 +1,45 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { v4 } from 'uuid';
 
-<<<<<<< HEAD
-function NewTicketForm(){
-=======
-function NewTicketForm() {
->>>>>>> e284bfcb588442aa51f0b4392a1415859e4568ba
+function NewTicketForm(props){
+  let _names = null;
+  let _location = null;
+  let _issue = null;
+
+  function handleNewTicketFormSubmission(event) {
+    event.preventDefault();
+    props.onNewTicketCreation({names: _names.value, location: _location.value, issue: _issue.value, id: v4()});
+    _names.value = '';
+    _location.value = '';
+    _issue.value = '';
+  }
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleNewTicketFormSubmission}>
         <input
           type='text'
           id='names'
-<<<<<<< HEAD
-          placeholder='Pair Names'/>
+          placeholder='Pair Names'
+          ref={(input) => {_names = input;}}/>
         <input
           type='text'
           id='location'
-          placeholder='Location'/>
+          placeholder='Location'
+          ref={(input) => {_location = input;}}/>
         <textarea
           id='issue'
-          placeholder='Describe your issue.'/>
+          placeholder='Describe your issue.'
+          ref={(textarea) => {_issue = textarea;}}/>
         <button type='submit'>Haaaalp!</button>
-=======
-          placeholder='Pair Names' />
-        <input
-          type='text'
-          id='location'
-          placeholder='Location' />
-        <textarea
-          id='issue'
-          placeholder='Describe your issue.' />
-        <button type='submit'>Halp!</button>
->>>>>>> e284bfcb588442aa51f0b4392a1415859e4568ba
       </form>
     </div>
   );
 }
+
+NewTicketForm.propTypes = {
+  onNewTicketCreation: PropTypes.func
+};
 
 export default NewTicketForm;
