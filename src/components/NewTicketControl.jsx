@@ -1,7 +1,7 @@
 import React from 'react';
 import ConfirmationQuestions from './ConfirmationQuestions';
 import NewTicketForm from './NewTicketForm';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 class NewTicketControl extends React.Component {
 
