@@ -3,6 +3,7 @@ import Header from './Header';
 import TicketList from './TicketList';
 import NewTicketControl from './NewTicketControl';
 import Error404 from './Error404';
+import Admin from './Admin';
 import { Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {
@@ -42,30 +43,35 @@ class App extends React.Component {
     console.log('componentWillUnmount');
     clearInterval(this.waitTimeUpdateTimer);
   }
-  componentWillMount() {
-    console.log('componentWillMount');
-  }
-  componentWillReceiveProps() {
-    console.log('componentWillReceiveProps');
-  }
-  shouldComponentUpdate() {
-    console.log('shouldComponentUpdate');
-    return true;
-  }
-  componentWillUpdate() {
-    console.log('componentWillUpdate');
-  }
-  componentDidUpdate() {
-    console.log('componentDidUpdate');
-  }
+  // componentWillMount() {
+  //   console.log('componentWillMount');
+  // }
+  // componentWillReceiveProps() {
+  //   console.log('componentWillReceiveProps');
+  // }
+  // shouldComponentUpdate() {
+  //   console.log('shouldComponentUpdate');
+  //   return true;
+  // }
+  // componentWillUpdate() {
+  //   console.log('componentWillUpdate');
+  // }
+  // componentDidUpdate() {
+  //   console.log('componentDidUpdate');
+  // }
 
   render() {
     return(
       <div>
         <Header/>
         <Switch>
-          <Route exact path='/' render={()=><TicketList ticketList={this.state.masterTicketList} />} />
-          <Route path='/newticket' render={()=><NewTicketControl onNewTicketCreation={this.handleAddingNewTicketToList} />} />
+          <Route exact path='/' render={()=><TicketList 
+            ticketList={this.state.masterTicketList} />} />
+          <Route path='/newticket' render={()=><NewTicketControl 
+            onNewTicketCreation={this.handleAddingNewTicketToList} />} />
+          <Route path='/admin' render={(props)=><Admin 
+            ticketList={this.state.masterTicketList} 
+            currentRouterPath={props.location.pathname} />} />
           <Route component={Error404} />
         </Switch>
       </div>

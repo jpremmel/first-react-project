@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+//Note: React-Router automatically passes a location.pathname prop to components rendered in its <Route> tags
+
 function Error404(props){
   return (
     <div>
