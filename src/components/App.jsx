@@ -30,7 +30,7 @@ class App extends React.Component {
     this.setState({masterTicketList: newMasterTicketList});
   }
 
-  //Component lifecycle methods
+  //Overriding component lifecycle methods - Look in the console to see when the React library is calling these as the program runs
   componentDidMount() {
     console.log('componentDidMount');
     this.waitTimeUpdateTimer = setInterval(() =>
