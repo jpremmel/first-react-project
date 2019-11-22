@@ -22,13 +22,6 @@ class App extends React.Component {
     this.setState({masterTicketList: newMasterTicketList});
   }
 
-  componentDidMount() {
-    this.waitTimeUpdateTimer = setInterval(() =>
-      this.updateTicketElapsedWaitTime(),
-    60000
-    );
-  }
-
   updateTicketElapsedWaitTime() {
     let newMasterTicketList = this.state.masterTicketList.slice();
     newMasterTicketList.forEach((ticket) =>
@@ -37,8 +30,33 @@ class App extends React.Component {
     this.setState({masterTicketList: newMasterTicketList});
   }
 
+  //Component lifecycle methods
+  componentDidMount() {
+    console.log('componentDidMount');
+    this.waitTimeUpdateTimer = setInterval(() =>
+      this.updateTicketElapsedWaitTime(),
+    60000
+    );
+  }
   componentWillUnmount(){
+    console.log('componentWillUnmount');
     clearInterval(this.waitTimeUpdateTimer);
+  }
+  componentWillMount() {
+    console.log('componentWillMount');
+  }
+  componentWillReceiveProps() {
+    console.log('componentWillReceiveProps');
+  }
+  shouldComponentUpdate() {
+    console.log('shouldComponentUpdate');
+    return true;
+  }
+  componentWillUpdate() {
+    console.log('componentWillUpdate');
+  }
+  componentDidUpdate() {
+    console.log('componentDidUpdate');
   }
 
   render() {
